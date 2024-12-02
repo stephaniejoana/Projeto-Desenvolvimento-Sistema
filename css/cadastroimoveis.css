@@ -1,0 +1,148 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*=============== ROOT VARIABLES ===============*/
+:root {
+    --color-primary: hsl(228, 57%, 28%);
+    --color-secondary: hsl(228, 66%, 47%);
+    --color-bg-light: hsl(228, 57%, 85%);
+    --color-bg-lighter: hsl(228, 57%, 75%);
+    --color-text-light: #fff;
+    --color-input-bg: #f9f9f9;
+    --color-placeholder: #bbb;
+    --transition-default: all 0.3s ease;
+    --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*=============== GLOBAL STYLES ===============*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primary);
+}
+
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-primary);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/*=============== HEADINGS ===============*/
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+    text-align: center;
+    position: relative;
+}
+
+h1:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 5px;
+    background-color: var(--color-secondary);
+    margin: 0.7rem auto 0;
+    border-radius: 3px;
+}
+
+/*=============== FORM ===============*/
+form {
+    background-color: var(--color-text-light);
+    border-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1150px;
+    box-shadow: var(--box-shadow);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Duas colunas */
+    gap: 30px; /* Espaçamento entre os campos */
+    align-items: center;
+}
+
+/* Estilo dos rótulos */
+label {
+    font-size: 14px;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* Estilo dos campos de entrada */
+input, select, textarea {
+    background-color: var(--color-input-bg); /* Fundo dos campos */
+    color: var(--color-primary);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition: var(--transition-default);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder {
+    color: var(--color-placeholder);
+}
+
+input:hover, select:hover, textarea:hover {
+    background-color: var(--color-bg-lighter);
+    transform: scale(1.02);
+    box-shadow: var(--box-shadow);
+}
+
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    border-color: var(--color-secondary);
+    background-color: var(--color-text-light);
+}
+
+/*=============== BUTTON ===============*/
+button {
+    background-color: var(--color-secondary); /* Cor principal */
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition-default);
+    grid-column: span 6; /* Botão ocupa toda a largura (2 colunas) */
+    text-transform: uppercase;
+    font-weight: 500;
+    box-shadow: var(--box-shadow);
+}
+
+button:hover {
+    background-color: hsl(228, 62%, 59%);
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: var(--box-shadow);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr; /* Muda para uma coluna em telas menores */
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}

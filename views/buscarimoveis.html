@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Imóveis</title>
+    <!-- Adicionado parâmetro para evitar cache -->
+    <link rel="stylesheet" href="../css/buscar.css?v=1.0">
+</head>
+<body>
+    <header>
+        <div id="user-info"></div>
+    </header>
+
+    <section>
+        <h1>Buscar Imóveis</h1>
+
+        <form action="buscarimoveis.php" method="get">
+            <a href="../index.html">Início</a>
+            <a href="cadastroimovelforms.html" class="botao">Cadastrar Imóvel</a>
+
+            <label for="preco_min">Preço Mínimo:</label>
+            <input type="number" id="preco_min" name="preco_min" min="0">
+
+            <label for="preco_max">Preço Máximo:</label>
+            <input type="number" id="preco_max" name="preco_max" min="0">
+
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro">
+
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Digite a cidade">
+
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" name="estado" maxlength="2" placeholder="Ex: SP">
+
+            <label for="tipo_negociacao">Tipo de Negociação:</label>
+            <select id="tipo_negociacao" name="tipo_negociacao">
+                <option value="">Selecione</option>
+                <option value="Venda">Venda</option>
+                <option value="Aluguel">Aluguel</option>
+            </select>
+
+            <label for="tipo_imovel">Tipo de Imóvel:</label>
+            <select id="tipo_imovel" name="tipo_imovel">
+                <option value="">Selecione</option>
+                <option value="casa">Casa</option>
+                <option value="apartamento">Apartamento</option>
+                <option value="kitnet">Kitnet</option>
+                <option value="studio">Studio</option>
+                <option value="sobrado">Sobrado</option>
+                <option value="chale">Chalé</option>
+                <option value="chacara">Chácara</option>
+                <option value="estudio">Estúdio</option>
+                <option value="sitio">Sítio</option>
+                <option value="cobertura">Cobertura</option>
+                <option value="flat">Flat</option>
+                <option value="pousada">Pousada</option>
+            </select>
+
+            <label for="numero_quartos">Número de Quartos:</label>
+            <select id="numero_quartos" name="numero_quartos">
+                <option value="">Selecione</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+            </select>
+
+            <label for="vagas_garagem">Vagas de Garagem:</label>
+            <select id="vagas_garagem" name="vagas_garagem">
+                <option value="">Selecione</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+            </select>
+
+            <button type="submit">Buscar</button>
+        </form>
+
+        <!-- Contêiner para os resultados -->
+        <div id="resultados-container">
+            <!-- Resultados -->
+            <section id="resultados"></section>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+    
+            const formData = new FormData(this);
+            const queryString = new URLSearchParams(formData).toString();
+    
+            fetch(`buscarimoveis.php?${queryString}`)
+                .then(response => response.text())
+                .then(data => {
+                    const resultados = document.getElementById("resultados");
+                    resultados.innerHTML = data;
+
+                    // Adicionando classe ao conteúdo carregado dinamicamente
+                    const imoveis = resultados.querySelectorAll(".imovel");
+                    imoveis.forEach(imovel => {
+                        imovel.classList.add("carregado");
+                    });
+                })
+                .catch(error => {
+                    console.error("Erro na busca:", error);
+                    document.getElementById("resultados").innerHTML = "<p>Ocorreu um erro. Tente novamente.</p>";
+                });
+        });
+    </script>
+</body>
+</html>

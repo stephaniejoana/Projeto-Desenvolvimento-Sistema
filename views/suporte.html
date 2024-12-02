@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Suporte</title>
+  <link rel="stylesheet" href="../css/links.css"> 
+  <script>
+    // Função para exibir a mensagem de confirmação
+    function exibirMensagemEnviada(event) {
+      event.preventDefault();  // Impede o envio imediato do formulário
+      alert("Sua mensagem foi enviada com sucesso! Nossa equipe de suporte entrará em contato.");
+      
+      // Você pode redirecionar para outra página ou exibir um novo conteúdo aqui
+      // Exemplo: window.location.href = 'mensagem_enviada.html';
+      
+      // Caso queira submeter o formulário depois da notificação, descomente a linha abaixo:
+      // event.target.submit();  
+    }
+  </script>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="container">
+      <h1>Suporte</h1>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container">
+    <section class="suporte">
+      <h2>Como podemos te ajudar?</h2>
+      <p>
+        Se você está enfrentando problemas ou tem dúvidas, nossa equipe de suporte está pronta para ajudar. 
+        Abaixo estão algumas das questões mais comuns. Caso sua dúvida não esteja na lista, entre em contato conosco.
+      </p>
+
+      <!-- FAQ -->
+      <div class="faq">
+        <h3>Perguntas Frequentes</h3>
+
+        <div class="faq__item">
+          <h4>Como faço para criar uma conta?</h4>
+          <p>Você pode criar uma conta clicando em "Cadastrar" no menu superior e preenchendo as informações necessárias.</p>
+        </div>
+
+        <div class="faq__item">
+          <h4>Esqueci minha senha. O que fazer?</h4>
+          <p>Clique em "Esqueci minha senha" na tela de login e siga as instruções para redefinir sua senha.</p>
+        </div>
+
+        <div class="faq__item">
+          <h4>Como posso alterar meus dados cadastrais?</h4>
+          <p>Faça login na sua conta e acesse a seção "Meus Dados" para atualizar suas informações.</p>
+        </div>
+
+        <div class="faq__item">
+          <h4>Quais são as formas de pagamento aceitas?</h4>
+          <p>Atualmente, aceitamos pagamento por cartão de crédito, boleto bancário e transferência bancária.</p>
+        </div>
+      </div>
+
+      <!-- Formulário de Suporte -->
+      <section class="suporte__form">
+        <h3>Precisa de mais ajuda?</h3>
+        <p>Envie uma mensagem para nossa equipe de suporte e resolveremos sua dúvida o mais rápido possível.</p>
+
+        <form action="processa_suporte.php" method="post" class="form__suporte" onsubmit="exibirMensagemEnviada(event)">
+          <div class="form__group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+          </div>
+
+          <div class="form__group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+          </div>
+
+          <div class="form__group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva seu problema ou dúvida" required></textarea>
+          </div>
+
+          <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 AMS Residencial. Todos os direitos reservados.</p>
+      <a href="../views/termos.html">Termos de Uso</a> | 
+      <a href="../views/privacidade.html">Política de Privacidade</a>
+    </div>
+  </footer>
+</body>
+</html>

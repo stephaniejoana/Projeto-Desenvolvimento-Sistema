@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Login</title>
+    <link rel="stylesheet" href="http://localhost/siteimobiliario/imobiliaria-landingPage-main/css/loginstyleform.css">
+</head>
+
+<body>
+    <div class="container">
+    <div class="form">
+        <form action="conexao.php" method="post" onsubmit="return validarSenhas()">
+    <input type="hidden" name="acao" value="cadastro">
+        
+            <div class="form-header">
+    <div class="title">
+        <h1>Fazer Login</h1>
+    </div>
+    
+    <div class="button-container">
+                        <div class="login-button">
+                            <button><a href="entrarforms.html">Entrar</a></button>
+                        </div>
+                        <div class="google-btn">
+                            <button><g href="#" class="google-btn" onclick="handleGoogleLogin()">Login com Google</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="imput-box">
+                        <label for="name">Nome</label>
+                        <input id="name" type="text" name="nome" placeholder="Digite seu Nome" required>
+                    </div>
+
+                    <div class="imput-box">
+                        <label for="email">E-mail</label>
+                        <input id="email" type="email" name="email" placeholder="Digite seu E-mail" required>
+                    </div>
+
+                    <div class="imput-box">
+                        <label for="telefone">Telefone</label>
+                        <input id="telefone" type="tel" name="telefone" placeholder="ex: (01) 2345-6789" required oninput="formatarTelefone(this)">
+                    </div>
+
+                    <div class="imput-box">
+                        <label for="password">Senha</label>
+                        <input id="password" type="password" name="senha" placeholder="Digite sua Senha" required>
+                    </div>
+
+                    <div class="imput-box">
+                        <label for="confirmarsenha">Confirme sua Senha</label>
+                        <input id="confirmarsenha" type="password" name="confirmarsenha" placeholder="Repita sua Senha" required>
+                    </div>
+
+                    <div class="opcoes">
+                        <label for="opcoes">Você é um?:</label>
+                        <select id="opcoes" name="opcoes">
+                            <option value="comprador">Comprador</option>
+                            <option value="vendedor">Vendedor</option>
+                            <option value="administrador">Administrador</option>            
+                        </select>
+                    </div>
+                </div>
+                <div class="continue-button">
+                    <button type="submit"><a>Continue</a></button>
+                </div>
+            </form>
+    </div>
+    </div>
+
+    <script>
+
+function validarSenhas() {
+    const senha = document.getElementById('password').value;
+    const confirmarSenha = document.getElementById('confirmarsenha').value;
+
+    const passwordField = document.getElementById('password');
+    const confirmPasswordField = document.getElementById('confirmarsenha');
+    
+    if (senha !== confirmarSenha) {
+        alert("As senhas não coincidem. Por favor, verifique e tente novamente.");
+        passwordField.style.borderColor = "red";
+        confirmPasswordField.style.borderColor = "red";
+        return false;
+    }
+    
+    passwordField.style.borderColor = "green";
+    confirmPasswordField.style.borderColor = "green";
+    return true;
+}
+
+
+        function formatarTelefone(input) {
+            // Remove todos os caracteres que não são números
+            let value = input.value.replace(/\D/g, '');
+            // Limita a 10 dígitos
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+            // Aplica a máscara
+            if (value.length > 6) {
+                input.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+            } else if (value.length > 2) {
+                input.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            } else if (value.length > 0) {
+                input.value = `(${value.slice(0, 2)}`;
+            } else {
+                input.value = '';
+            }
+        }
+
+        function handleGoogleLogin() {
+    // Exibe uma mensagem informando que a funcionalidade está em manutenção
+    alert("Esta funcionalidade está em manutenção. Por favor, tente novamente mais tarde.");
+    
+    // Redirecionamento comentado para evitar confusão enquanto está em manutenção
+    // window.location.href = '/auth/google'; // Altere conforme necessário.
+}
+
+
+        // Exibe uma mensagem de erro se o email já estiver em uso
+        window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('error') === '1') {
+        alert("Este e-mail ja está em uso.");
+    }
+    // Adicione outros erros se necessário
+}
+
+
+      
+        function handleFormSubmit() {
+        const opcaoSelecionada = document.getElementById('opcoes').value;
+
+        // Se "Vendedor" for selecionado, redirecione para "cadastrarimovel.html"
+        if (opcaoSelecionada === 'vendedor') {
+            window.location.href = 'cadastrarimovel.html';
+            return false; // Impede o envio do formulário
+        }
+
+        // Caso contrário, envie o formulário normalmente para 'conexao.php'
+        document.getElementById('loginForm').action = 'buscarimoveis.html';
+        return true;
+    }
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*=============== ROOT VARIABLES ===============*/
+:root {
+    --color-primary: hsl(228, 66%, 47%);
+    --color-secondary:  hsl(228, 57%, 28%);
+    --color-bg-light: hsl(228, 57%, 85%);
+    --color-bg-lighter: hsl(228, 57%, 75%);
+    --color-text-light: #fff;
+    --color-input-bg: #f9f9f9;
+    --color-placeholder: #bbb;
+    --transition-default: all 0.3s ease;
+    --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*================ RESET STYLES ================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*=============== BODY ===============*/
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-primary);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/*=============== HEADER ===============*/
+.header {
+    background-color: var(--color-primary);
+    padding: 20px 0;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+/*=============== CONTAINER ===============*/
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/*=============== SECTIONS ===============*/
+.sobre, .bonus, .faq, .noticias {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: var(--color-bg-light);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+.sobre h2, .bonus h2, .faq h2, .noticias h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.sobre h3, .bonus h3, .faq h3, .noticias h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.sobre p, .bonus p, .faq p, .noticias p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.sobre ul, .bonus ul, .faq ul, .noticias ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.sobre li, .bonus li, .faq li, .noticias li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.sobre a, .bonus a, .faq a, .noticias a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: var(--transition-default);
+}
+
+.sobre a:hover, .bonus a:hover, .faq a:hover, .noticias a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/*=============== FOOTER ===============*/
+.footer {
+    background-color: var(--color-primary);
+    padding: 30px 0;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.footer .footer__info {
+    margin-top: 20px;
+}
+
+.footer a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: var(--transition-default);
+}
+
+.footer a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+/*=============== FORMULARIOS E ENTRADAS ===============*/
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-placeholder);
+    border-radius: 5px;
+    color: var(--color-primary);
+    font-size: 1rem;
+    transition: var(--transition-default);
+}
+
+input:focus, textarea:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+}
+
+/*=============== BUTTONS ===============*/
+button {
+    padding: 12px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-default);
+}
+
+button:hover {
+    background-color: var(--color-secondary);
+}
+
+/*=============== MEDIA QUERIES ===============*/
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .sobre, .bonus, .faq, .noticias {
+        padding: 15px;
+    }
+
+    .footer .footer__info {
+        font-size: 0.9rem;
+    }
+}

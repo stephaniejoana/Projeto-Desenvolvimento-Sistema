@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Imóvel</title>
+    
+    <link rel="stylesheet" href="../css/cadastroimoveis.css">
+    <script>
+        // Função para preencher os campos automaticamente com os dados do CEP
+        function preencherEndereco() {
+            const cep = document.getElementById('cep').value.replace(/\\D/g, ''); // Remove qualquer caractere não numérico
+
+            if (cep.length === 8) { // Verifica se o CEP tem 8 dígitos
+                const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.erro) {
+                            alert('CEP não encontrado!');
+                        } else {
+                            // Preenche os campos com os dados retornados
+                            document.getElementById('endereco').value = data.logradouro;
+                            document.getElementById('bairro').value = data.bairro;
+                            document.getElementById('cidade').value = data.localidade;
+                            document.getElementById('estado').value = data.uf;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar o CEP:', error);
+                        alert('Erro ao buscar os dados do CEP.');
+                    });
+            } else {
+                alert('CEP inválido. O CEP deve conter 8 dígitos.');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Cadastro de Imóvel</h1>
+    <form action="cadastroimovel.php" method="POST">
+
+  
+        <label for="titulo">Título do Imóvel:</label>
+        <input type="text" id="titulo" name="titulo" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+        <label for="preco">Preço:</label>
+        <input type="number" step="0.01" id="preco" name="preco" required>
+
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" onblur="preencherEndereco()" maxlength="8" required>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required>
+
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" required>
+
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" required>
+
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" required>
+
+        <label for="tipo_imovel">Tipo de Imóvel:</label>
+        <select id="tipo_imovel" name="tipo_imovel" required>
+            <option value="Apartamento">Apartamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Cobertura">Cobertura</option>
+            <option value="Kitnet">Kitnet</option>
+            <option value="Chácara">Chácara</option>
+            <option value="Flat">Flat</option>
+            <option value="Estúdio">Estúdio</option>
+            <option value="Sobrado">Sobrado</option>
+            <option value="Pousada">Pousada</option>
+            <option value="Chalé">Chalé</option>
+            <option value="Sítio">Sítio</option>
+            <option value="Studio">Studio</option>
+        </select>
+
+        <label for="status">Status do Imóvel:</label>
+        <select id="status" name="status" required>
+            <option value="Disponível">Disponível</option>
+            <option value="Indisponível">Indisponível</option>
+            <option value="Reservado">Reservado</option>
+        </select>
+
+        <label for="tipo_negociacao">Tipo de Negociação:</label>
+        <select id="tipo_negociacao" name="tipo_negociacao" required>
+            <option value="Venda">Venda</option>
+            <option value="Aluguel">Aluguel</option>
+        </select>
+
+        <label for="numero_quartos">Número de Quartos:</label>
+        <input type="number" id="numero_quartos" name="numero_quartos" required>
+
+        <label for="vagas_garagem">Vagas de Garagem:</label>
+        <input type="number" id="vagas_garagem" name="vagas_garagem" required>
+
+        <button type="submit">Cadastrar Imóvel</button>
+    </form>
+
+</body>
+</html>

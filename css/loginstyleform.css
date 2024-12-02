@@ -1,0 +1,285 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins','sans-serif';
+        color: hsl(228, 57%, 28%);
+    }
+    
+
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: hsl(228, 57%, 28%);
+}
+
+.container {
+    width: 60%;
+    height: 75vh;
+    display: flex;
+    box-shadow: 5px 5px 10px rgba(0,0,0, .212);
+}
+
+.form {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 3rem;
+
+}
+
+.form-header {
+
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+select {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    width: 90%;
+    cursor: pointer;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px; /* Espaço entre o rótulo e o dropdown */
+}
+
+select:focus-visible{
+    outline: 1px solid hsl(228, 66%, 47%);
+
+}
+
+select:hover {
+    
+    background-color: #eeeeee75;
+
+}
+
+.login-button {
+
+    display: flex;
+    align-items: center;
+
+}
+
+.login-button button {
+
+    border: none;
+    background-color: hsl(228, 66%, 47%);
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.login-button button:hover{
+    background-color: hsl(228, 62%, 59%);
+}
+
+.login-button button a{
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+
+}
+
+.google-btn {
+
+    display: flex;
+    align-items: center;
+
+}
+
+.google-btn button {
+
+    border: none;
+    background-color: hsl(228, 66%, 47%);
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.google-btn button:hover{
+    background-color: hsl(228, 62%, 59%);
+}
+
+.google-btn button g{
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+
+}
+
+.button-container {
+
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    gap: 22px; /* Espaço entre os botões */
+    
+}
+
+.form-header h1:after{
+    content: '';
+    display: block;
+    width: 12rem;
+    height: 0.4rem;
+    background-color: darkorange;
+    margin: 0 auto;
+    position: absolute;
+    border-width: 10px;
+    border-radius: 5px;
+
+}
+
+.input-group {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+
+}
+
+.imput-box { 
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+}
+
+.imput-box input {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+}
+
+.imput-box input:hover {
+    
+    background-color: #eeeeee75;
+
+}
+
+.imput-box input:focus-visible{
+    outline: 1px solid hsl(228, 66%, 47%);
+
+}
+
+.imput-box input::placeholder {
+    color: #2b2a2a75;
+}
+
+.continue-button button {
+    width: 100%;
+    margin-top: 2.5rem;
+    border: none;
+    background-color: hsl(228, 57%, 28%);
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.continue-button button:hover{
+    background-color: hsl(228, 66%, 47%);
+}
+
+.continue-button button a {
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color:hsl(228, 100%, 97%);
+
+}
+
+@media screen and (max-width: 1330px) {
+    .container{
+        width: 50%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .form {
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 1100px) {
+    .container{
+        width: 80%;
+                  
+    }
+
+    .input-group{
+        flex-direction: column;
+        overflow-y: scroll;
+        flex-wrap: nowrap;
+        max-height: 15rem;
+        padding-right: 10rem;
+        
+
+    }
+
+    .form-header h1:after{
+        content: '';
+        display: block;
+        width: 7rem;
+        height: 0.4rem;
+        background-color: darkorange;
+        margin: 0 auto;
+        position: absolute;
+        border-width: 10px;
+        border-radius: 5px;
+    
+    }
+
+    .button-container {
+
+        display: flex;
+        justify-content: center; /* Centraliza os botões */
+        gap: 20px; /* Espaço entre os botões */
+        
+    }
+    
+    @media screen and (max-width: 768px) {
+        .container {
+            width: 90%;
+        }
+    
+        .input-group {
+            flex-direction: column;
+            padding-right: 10px;
+        }
+    
+        .form-header h1:after {
+            width: 7rem;
+        }
+    }
+    
+    
+    
+}

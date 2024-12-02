@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Imóvel</title>
+    <script>
+        async function buscarEndereco() {
+            const cep = document.getElementById("cep").value.replace(/\D/g, '');
+            if (cep.length === 8) {
+                try {
+                    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                    const data = await response.json();
+                    if (!data.erro) {
+                        document.getElementById("endereco").value = data.logradouro || '';
+                        document.getElementById("bairro").value = data.bairro || ''; // Campo do bairro
+                        document.getElementById("cidade").value = data.localidade || '';
+                        document.getElementById("estado").value = data.uf || '';
+                    } else {
+                        alert("CEP não encontrado!");
+                    }
+                } catch (error) {
+                    console.error("Erro ao buscar o CEP:", error);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Cadastro de Imóvel</h2>
+    <form action="cadastroimovel.php" method="POST">
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" maxlength="255" required>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" maxlength="9" onblur="buscarEndereco()" required>
+        </div>
+        <div class="form-group">
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" maxlength="255" required>
+        </div>
+        <div class="form-group">
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" name="bairro" maxlength="100" readonly required>
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" maxlength="100" readonly required>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" name="estado" maxlength="2" readonly required>
+        </div>
+        <div class="form-group">
+            <label for="tipo_imovel">Tipo de Imóvel:</label>
+            <select id="tipo_imovel" name="tipo_imovel" required>
+                <option value="Apartamento">Apartamento</option>
+                <option value="Casa">Casa</option>
+                <option value="Cobertura">Cobertura</option>
+                <option value="Kitnet">Kitnet</option>
+                <option value="Chácara">Chácara</option>
+                <option value="Flat">Flat</option>
+                <option value="Estúdio">Estúdio</option>
+                <option value="Sobrado">Sobrado</option>
+                <option value="Pousada">Pousada</option>
+                <option value="Chalé">Chalé</option>
+                <option value="Sítio">Sítio</option>
+                <option value="Studio">Studio</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="Disponível">Disponível</option>
+                <option value="Indisponível">Indisponível</option>
+                <option value="Reservado">Reservado</option>
+            </select>
+        </div>        
+        
+        <div class="form-group">
+            <label for="tipo_negociacao">Tipo de Negociação:</label>
+            <select id="tipo_negociacao" name="tipo_negociacao" required>
+                <option value="Venda">Venda</option>
+                <option value="Aluguel">Aluguel</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="numero_quartos">Número de Quartos:</label>
+            <input type="number" id="numero_quartos" name="numero_quartos" required>
+        </div>
+        <div class="form-group">
+            <label for="vagas_garagem">Vagas de Garagem:</label>
+            <input type="number" id="vagas_garagem" name="vagas_garagem" required>
+        </div>
+        
+        <button type="submit" class="submit-btn">Cadastrar Imóvel</button>
+    </form>
+</div>
+
+</body>
+</html>

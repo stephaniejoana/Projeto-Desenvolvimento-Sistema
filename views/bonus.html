@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bônus</title>
+  <link rel="stylesheet" href="../css/links.css"> 
+  <style>
+    .notificacao {
+      background-color: #f44336; /* Cor vermelha */
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .btn-desabilitado {
+      background-color: #e0e0e0;
+      color: #a0a0a0;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="container">
+      <h1>Bônus e Promoções</h1>
+    </div>
+  </header>
+
+  <!-- Notificação de promoções acabadas -->
+  <div class="notificacao">
+    <p>Infelizmente, todas as promoções acabaram. Fique atento para futuras ofertas!</p>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <main class="container">
+    <section class="bonus">
+      <h2>Ofertas Especiais (Promoções Acabadas)</h2>
+      <p>As promoções mencionadas abaixo não estão mais disponíveis, mas em breve teremos novas oportunidades!</p>
+
+      <!-- Bônus 1 -->
+      <div class="bonus__item">
+        <h3>Bônus de Boas-Vindas</h3>
+        <p>O bônus exclusivo de R$ 500,00 para cadastro já acabou. Fique atento para novas promoções!</p>
+        <a href="#" class="btn btn-desabilitado">Promoção encerrada</a>
+      </div>
+
+      <!-- Bônus 2 -->
+      <div class="bonus__item">
+        <h3>Desconto de Aniversário</h3>
+        <p>O desconto de 10% no mês do seu aniversário já expirou. Não se preocupe, novas promoções estão por vir!</p>
+        <a href="#" class="btn btn-desabilitado">Promoção encerrada</a>
+      </div>
+
+      <!-- Bônus 3 -->
+      <div class="bonus__item">
+        <h3>Promoção Indique e Ganhe</h3>
+        <p>A promoção de indicação também terminou, mas continuaremos oferecendo benefícios em breve.</p>
+        <a href="#" class="btn btn-desabilitado">Promoção encerrada</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 AMS Residencial. Todos os direitos reservados.</p>
+      <a href="termos.html">Termos de Uso</a> | 
+      <a href="privacidade.html">Política de Privacidade</a>
+    </div>
+  </footer>
+</body>
+</html>

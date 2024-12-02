@@ -1,0 +1,233 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*=============== ROOT VARIABLES ===============*/
+:root {
+    --color-primary: hsl(228, 57%, 28%);
+    --color-secondary: hsl(228, 66%, 47%);
+    --color-bg-light: hsl(228, 57%, 85%);
+    --color-bg-lighter: hsl(228, 57%, 75%);
+    --color-text-light: #fff;
+    --color-input-bg: #f9f9f9;
+    --color-placeholder: #bbb;
+    --transition-default: all 0.3s ease;
+    --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    --border-radius: 10px;
+}
+
+/*=============== GLOBAL STYLES ===============*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primary);
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, var(--color-bg-light), var(--color-bg-lighter));
+    font-size: 1rem;
+}
+
+/*=============== SECTION ===============*/
+section {
+    width: 80%;
+    max-width: 1000px;
+    background-color: var(--color-text-light);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*=============== HEADINGS ===============*/
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    text-align: center;
+    position: relative;
+}
+
+h1:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 6px;
+    background-color: var(--color-secondary);
+    margin: 1rem auto 0;
+    border-radius: 5px;
+}
+
+/*=============== FORM ===============*/
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    align-items: center;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    align-self: flex-start;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    transition: var(--transition-default);
+    background-color: var(--color-input-bg);
+}
+
+input::placeholder {
+    color: var(--color-placeholder);
+}
+
+input:hover, select:hover {
+    background-color: #f3f3f3;
+    transform: scale(1.02);
+    box-shadow: var(--box-shadow);
+}
+
+input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    border-color: var(--color-secondary);
+    background-color: var(--color-text-light);
+}
+
+/*=============== BUTTON ===============*/
+button {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    padding: 1.2rem 1.6rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-default);
+    text-transform: uppercase;
+    font-weight: 500;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+}
+
+button:hover {
+    background-color: hsl(228, 62%, 59%);
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: var(--box-shadow);
+}
+
+/*=============== RESULTADOS ===============*/
+#resultados-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+#resultados {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 2rem;
+    width: 100%;
+}
+
+#resultados .imovel {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 20px;
+    transition: var(--transition-default);
+}
+
+#resultados .imovel:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+#resultados .imovel h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+#resultados .imovel p {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+#resultados .imovel a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 500;
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 1.1rem;
+    transition: var(--transition-default);
+}
+
+#resultados .imovel a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media screen and (max-width: 1024px) {
+    #resultados {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #resultados {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        width: 95%;
+        padding: 2.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    form {
+        gap: 1.5rem;
+    }
+
+    input, select {
+        font-size: 1rem;
+    }
+}

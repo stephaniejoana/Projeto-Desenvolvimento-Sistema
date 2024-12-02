@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <link rel="stylesheet" href="http://localhost/siteimobiliario/imobiliaria-landingPage-main/css/loginstyleform.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="form">
+            <form action="conexao.php" method="post">
+                <div class="form-header">
+                    <h1>Entrar</h1>
+                </div>
+                <input type="hidden" name="acao" value="login">
+                <div class="input-box">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" name="email" placeholder="Digite seu E-mail" required>
+                </div>
+                <div class="input-box">
+                    <label for="senha">Senha</label>
+                    <input id="senha" type="password" name="senha" placeholder="Digite sua Senha" required>
+                </div>
+                <button type="submit" href="buscarimoveis.html">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Função para exibir um alerta se o parâmetro "error" estiver presente na URL
+        function verificarErroLogin() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error')) {
+                alert("Email ou senha inválidos.");
+            }
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = verificarErroLogin;
+    </script>
+</body>
+</html>
